@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DIGI4SCHOOL Bücherregal</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<meta name="msapplication-config" content="https://cdn.digi4school.at/browserconfig.xml"/>
+<link rel="shortcut icon" href="https://cdn.digi4school.at/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.digi4school.at/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.digi4school.at/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cdn.digi4school.at/favicon-16x16.png">
+<link rel="manifest" href="https://cdn.digi4school.at/manifest.json">
+<link rel="mask-icon" href="https://cdn.digi4school.at/safari-pinned-tab.svg" color="#14b036">
+
+    <link rel="stylesheet" href="/resources/digi4s-br/open_sans_400_700.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/resources/digi4s-br/br.css?v=20210819" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdn.digi4school.at/jquery-ui/jquery-ui.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/resources/digi4s-br/icon_fonts.css?v=20210819" type="text/css" media="all">
+   <script type="text/javascript" src="https://cdn.digi4school.at/js/jquery-2.2.4.min.js"></script>
+   <script type="text/javascript" src="https://cdn.digi4school.at/jquery-ui/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/resources/digi4s-br/br.js?v=20210914"></script>
+
+</head>
+<body>
+
+
+
+<style>
+    @-webkit-keyframes run {
+        0% { left: 20%;}
+        49% { left : 80%; -webkit-transform: scale(1, 1);}
+        50% { left : 80%; -webkit-transform: scale(-1, 1);}
+        99%{ left: 20%; -webkit-transform: scale(-1, 1);}
+        100%{ left: 20%; -webkit-transform: scale(1, 1);}
+    }
+</style>
+
+<div id="top"><div>
+
+<a href="/"><img id="logo" src="/resources/digi4s-br/img/d4s_logo.png"></a>
+</div>
+</div>
+
+<div id="mid">
+
+    <div class="cent">
+
+<script nonce="865782FA64246C04FDD402B3676F1FD895EE633F" >
+$(function() {
+  $("#login").on("submit", function(e) {
+    e.preventDefault();
+    $.post("/br/xhr/login", $("#login").serialize(), function(data){
+      if (data == "OK") { window.location.href="/br/find/3363/21/img/6.png"; return false; }
+      else { $("#password").val(''); error("E-Mail-Adresse oder Passwort sind falsch.<br/><br/>Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich, falls Sie das noch nicht getan haben.") };
+    }, "text");
+  });
+
+  $("#erneuern_link").on("click", function() {
+    this.href='/erneuern?email='+$('#email').val();
+  });
+});
+</script>
+
+<div id="anmeldung">
+
+<div id="midd">
+
+ <div id="eins" class="blk cents">
+  <div class="lasche"><div class="icon-person"></div>LOGIN</div>
+  <h2>Anmeldung</h2>
+  <div class="txt">
+   <form id="login" method="post" action="/br/login">
+   <label for="email">E-Mail</label><br>
+   <input name="email" id="email" type="email" required><br>
+   <label for="password">Passwort</label><br>
+   <input name="password" id="password" type="password" required><br>
+   <a id="erneuern_link" href="#">Passwort vergessen?</a><br>
+   <button>Anmelden</button>
+   </form>
+  </div>
+  <div class="features">
+    <a href="/registrieren">Kostenlose Registrierung</a>
+  </div>
+ </div>
+
+ <br style="clear:both">
+</div>
+</div>
+</div>
+</div>
+<div id="bot"><div class="cent">
+<a href="/faq">FRAGEN &amp; ANTWORTEN</a>
+<a href="/tutorials">ANLEITUNG</a>
+<a href="/anonym">ANONYMER ZUGANG</a>
+<a href="/demo">DEMO</a>
+<a href="/kontakt">KONTAKT</a>
+<a href="/impressum">IMPRESSUM</a></div>
+</div>
+
+
+
+
+</body>
+</html>

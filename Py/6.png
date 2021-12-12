@@ -14,13 +14,14 @@
 <link rel="manifest" href="https://cdn.digi4school.at/manifest.json">
 <link rel="mask-icon" href="https://cdn.digi4school.at/safari-pinned-tab.svg" color="#14b036">
 
+    <link rel="stylesheet" href="/resources/digi4s-br/br.css?v=20211028" type="text/css" media="all">
     <link rel="stylesheet" href="/resources/digi4s-br/open_sans_400_700.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/resources/digi4s-br/br.css?v=20210819" type="text/css" media="all">
     <link rel="stylesheet" href="https://cdn.digi4school.at/jquery-ui/jquery-ui.min.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/resources/digi4s-br/icon_fonts.css?v=20210819" type="text/css" media="all">
-   <script type="text/javascript" src="https://cdn.digi4school.at/js/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="/resources/digi4s-br/icon_fonts.css?v=20211020" type="text/css" media="all">
+   <script type="text/javascript" src="https://cdn.digi4school.at/js/jquery.min.js"></script>
    <script type="text/javascript" src="https://cdn.digi4school.at/jquery-ui/jquery-ui.min.js"></script>
-   <script type="text/javascript" src="/resources/digi4s-br/br.js?v=20210914"></script>
+   <script type="text/javascript" src="https://cdn.digi4school.at/jquery-ui/jquery.ui.touch-punch.min.js"></script>
+   <script type="text/javascript" src="/resources/digi4s-br/br.js?v=20211028"></script>
 
 </head>
 <body>
@@ -47,12 +48,12 @@
 
     <div class="cent">
 
-<script nonce="865782FA64246C04FDD402B3676F1FD895EE633F" >
+<script nonce="9D9FFC092B68F3F2C25F2CE3D46DC47F89F5625C" >
 $(function() {
   $("#login").on("submit", function(e) {
     e.preventDefault();
     $.post("/br/xhr/login", $("#login").serialize(), function(data){
-      if (data == "OK") { window.location.href="/br/find/3363/21/img/6.png"; return false; }
+      if (data == "OK") { window.location.href="/br/find/3363/21/img/6.png?name=digi4s&value=%22143836%252c1632308643%252c1632308643%2520%7b287%25200%25204AFEF820584A033B1653462A0B0EED569FF513C2%7d%22&path=/&domain=.digi4school.at&secure=True&httpOnly=True&sameSite=Lax"; return false; }
       else { $("#password").val(''); error("E-Mail-Adresse oder Passwort sind falsch.<br/><br/>Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich, falls Sie das noch nicht getan haben.") };
     }, "text");
   });

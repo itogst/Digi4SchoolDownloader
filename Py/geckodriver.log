@@ -713,3 +713,6 @@ JavaScript warning: https://cdn.digi4school.at/viewer-2020/js/IDRViewer-1.2.js, 
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1639397442178	geckodriver	INFO	Listening on 127.0.0.1:50339
+1639397445250	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50340" "-no-remote" "-profile" "C:\\Users\\sasch\\AppData\\Local\\Temp\\rust_mozprofilebM0Wp8"
+1639397445608	Marionette	INFO	Marionette enabled

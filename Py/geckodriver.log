@@ -590,23 +590,32 @@ DevTools listening on ws://localhost:50569/devtools/browser/0b13b7cc-4f45-4e27-a
 1639338354550	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
 console.log: WebExtensions: reset-default-search: starting.
 console.log: WebExtensions: reset-default-search: No addons in our list are installed.
-\\firefox.exe" "--marionette" "--remote-debugging-port" "50632" "-no-remote" "-profile" "C:\\Users\\sasch\\AppData\\Local\\Temp\\rust_mozprofileSZSLRQ"
-1639338388179	Marionette	INFO	Marionette enabled
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\sasch\\AppData\\Local\\Temp\\rust_mozprofileSZSLRQ\\search.json.mozlz4", (void 0)))
-DevTools listening on ws://localhost:50632/devtools/browser/11743781-c137-4e8f-9b94-00d40a9bc4e9
-1639338390377	Marionette	INFO	Listening on port 50637
-1639338390609	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-1639338393368	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1639349704037	Marionette	INFO	Stopped listening on port 50574
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+[Parent 21428, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x39015B,name=PContent::Msg_InsertNewFocusActionId) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x39014E,name=PContent::Msg_DiscardBrowsingContext) Closed channel: cannot send/recv
+
+[Parent 21428, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+ent 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
 1639338393522	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
 console.log: WebExtensions: reset-default-search: starting.
 console.log: WebExtensions: reset-default-search: No addons in our list are installed.
-1639338914476	geckodriver	INFO	Listening on 127.0.0.1:51320
-1639338917521	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51321" "-no-remote" "-profile" "C:\\Users\\sasch\\AppData\\Local\\Temp\\rust_mozprofileIKbm86"
-1639338917740	Marionette	INFO	Marionette enabled
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\sasch\\AppData\\Local\\Temp\\rust_mozprofileIKbm86\\search.json.mozlz4", (void 0)))
-DevTools listening on ws://localhost:51321/devtools/browser/e2c20f24-a340-4a79-896f-d5a05e04cc31
-1639338919874	Marionette	INFO	Listening on port 51326
-1639338920173	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1639349712956	Marionette	INFO	Stopped listening on port 50637
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+!!! error running onStopped callback: TypeError: callback is not a function
+[Parent 29228, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x39015B,name=PContent::Msg_InsertNewFocusActionId) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x39014E,name=PContent::Msg_DiscardBrowsingContext) Closed channel: cannot send/recv
+
+[Parent 29228, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+l be ignored for this session
 1639338922954	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
 1639338923090	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
 1639338923211	Marionette	INFO	Stopped listening on port 51326

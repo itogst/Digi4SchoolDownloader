@@ -1,10 +1,14 @@
-import requests
-
+import os
+import sys
 from html.parser import HTMLParser
+
+import requests
 
 # Global variables
 url = ""
 payload = {}
+email = "sascha.gottsbacher@aon.at"
+password = "BOnqRqMyP1PKWdD8OOtZ"
 
 
 # no file for this class because python doesnt like me (variables are fucked)
@@ -13,7 +17,7 @@ class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         global payload  # PYTHON WHY THE FUCK
         global url
-        print(tag, ": ", attrs)
+        # print(tag, ": ", attrs)
         if tag == 'input':
             payload[attrs[0][1]] = attrs[1][1]
         elif tag == 'form':
@@ -22,39 +26,62 @@ class MyHTMLParser(HTMLParser):
                     url = attr[1]
 
 
-# url to download
-pngUrl = 'https://a.digi4school.at/ebook/5134/26/img/2.png'
+# URL to download
+bookUrl = 'https://a.digi4school.at/ebook/5134/'
+urlParts = bookUrl.split("/")
+
+# Paths from URL
+bookPath = "./" + urlParts[urlParts.__len__()-2] + "/" + urlParts[urlParts.__len__()-1]
+# png = urlParts[urlParts.__len__()-1]
 
 # Start the session
 session = requests.Session()
-# Add auth cookie, because stupid
-session.cookies.set("digi4s",
-                    '"143836%2c1639334468%2c1639346112%20{12%200%20C231768D4B3305A40EBF12696521425E8902CFE8}"',
-                    domain="digi4school.at")
-# First request to get form
-request = session.get(pngUrl)
 
-# Parse data from form
-string = request.text
-parser = MyHTMLParser()
-parser.feed(string)
+# Send auth request. No manual cookies anymore, hurray!
+session.post("https://digi4school.at/br/xhr/login", {"email": email, "password": password})
+for page in range(24, 34):
+    print(page)
+    pagePath = bookPath + "/" + str(page)
+    pageUrl = bookUrl + "/" + str(page)
 
-# Output of Parse
-print(url)
-print(payload)
+    for image in range(1, 10):
+        png = str(image) + ".png"
+        imagePath = pagePath + "/img/"
+        imageUrl = pageUrl + "/img/" + png
+        #png = "1.png"
+        # print(png)
 
-# Send POST to defined URL
-request = session.post(url, data=payload)
+        pngPath = pagePath + png
+        # First request to get form
+        request = session.get(imageUrl)
 
-# Do this whole shit again because it doesnt work the first time
-s = request.text
+        # Parse data from form
+        string = request.text
+        parser = MyHTMLParser()
+        parser.feed(string)
 
-parser.feed(s)
-print(url)
-print(payload)
+        # Output of Parse
+        # print(url)
+        # print(payload)
 
-# open("7.html", 'wb').write(r.content)
-request = session.post(url, data=payload)
+        # Send POST to defined URL
+        request = session.post(url, data=payload)
 
-# Presto, we got an image
-open("1.png", 'wb').write(request.content)
+        # Do this whole shit again because it doesnt work the first time
+        s = request.text
+
+        parser.feed(s)
+        # print(url)
+        # print(payload)
+
+        # open("7.html", 'wb').write(r.content)
+        session.post(url, data=payload)
+        request = session.get(imageUrl)
+        # Presto, we got an image
+        if request.status_code == 200:
+
+            print("\t" + png + " 200 OK")
+            os.makedirs(imagePath, 0o777, True)
+            open(imagePath + "/" + png, 'wb').write(request.content)
+        else:
+            break

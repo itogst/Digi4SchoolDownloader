@@ -4,7 +4,7 @@ import requests
 
 ltiUrl = ""
 payload = {}
-session= requests.Session()
+
 
 class MyHTMLParser(HTMLParser):
 
@@ -22,6 +22,9 @@ class MyHTMLParser(HTMLParser):
     def error(self, message):
         print(message)
         print("no bloody clue")
+
+
+session = requests.Session()
 
 
 class Digi4SchoolCommunicator:
@@ -43,7 +46,7 @@ class Digi4SchoolCommunicator:
         for i in range(5):
 
             try:
-                print(session.cookies["digi4p"])
+                session.cookies["digi4p"]
                 return answer
 
             except KeyError:
@@ -54,12 +57,10 @@ class Digi4SchoolCommunicator:
                 # translate lti form into request
 
                 # post lti form
-                #payload["resource_link_id"] = "5134"
+                # payload["resource_link_id"] = "5134"
                 answer = session.post(ltiUrl, data=payload)
                 # post lti form
         # request until cookies have been obtained
-
-
 
         # return requested file  in bytes
         return "404"

@@ -65,3 +65,7 @@ class Digi4SchoolCommunicator:
         # return requested file  in bytes
         return "404"
 
+    @staticmethod
+    def close_session():
+        session.close()
+

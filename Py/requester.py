@@ -34,7 +34,7 @@ class Digi4SchoolCommunicator:
         # login begin
 
         email = "sascha.gottsbacher@aon.at"
-        password = "BOnqRqMyP1PKWdD8OOtZ"
+        password = "" # outdated
         session.post("https://digi4school.at/br/xhr/login", {"email": email, "password": password})
         # login end
 

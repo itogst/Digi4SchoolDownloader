@@ -24,7 +24,7 @@ __copyright__ = "Copyright (c) 2013"
 __license__ = "Python"
 
 
-def getFileList(root, extension):
+def get_file_list(root, extension):
     """Get all svg files in root directory and below"""
 
     svg_list = []
@@ -34,18 +34,6 @@ def getFileList(root, extension):
             if file.endswith(extension):
                 abspath_file = path + os.sep + file
                 svg_list.append(abspath_file)
-    print('Were found %i svg files under root path: %s' %(len(svg_list), root))
+    print('%i svg files were found under root path: %s' %(len(svg_list), root))
     return svg_list
 
-def svg2pdf(file, output):
-    """Convert all svg files to pdf according to specified options"""
-
-    options = '--shell --export-area-drawing'
-    print('\nConverting, please wait...\n')
-
-    print('Converting file: %s' %file)
-
-    os.system('inkscape "%s" --export-area-drawing --batch-process --export-type=pdf -o "%s"' %(file, output))
-
-#--export-area-drawing --batch-process --export-type=pdf --export-filename=output.pdf
-#inkscape "Py\5134\24\24.svg" --export-area-drawing --batch-process --export-type=pdf --export-filename=output.pdf

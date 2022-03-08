@@ -28,14 +28,21 @@ session = requests.Session()
 
 
 class Digi4SchoolCommunicator:
+    email = ""
+    password = ""
 
-    @staticmethod
-    def get_file(file_url):
+    @classmethod
+    def get_credentials(cls):
+        print("Email: ")
+        cls.email = input()
+        print("Password: ")
+        cls.password = input()
+
+    @classmethod
+    def get_file(cls, file_url):
         # login begin
 
-        email = "sascha.gottsbacher@aon.at"
-        password = "" # outdated
-        session.post("https://digi4school.at/br/xhr/login", {"email": email, "password": password})
+        session.post("https://digi4school.at/br/xhr/login", {"email": cls.email, "password": cls.password})
         # login end
 
         # get lti form begin
@@ -65,7 +72,6 @@ class Digi4SchoolCommunicator:
         # return requested file  in bytes
         return "404"
 
-    @staticmethod
-    def close_session():
+    @classmethod
+    def close_session(cls):
         session.close()
-

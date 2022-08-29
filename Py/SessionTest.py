@@ -8,7 +8,8 @@ import time
 run_Download = True
 run_SVG_2_PDF = True
 run_PDF_merger = True
-
+# TODO - make for loops  into while
+# DONE - multithread download
 # URL to download
 print("Book number: ")
 bookNr = input()
@@ -18,6 +19,8 @@ bookLength = int(input())
 
 Digi4SchoolCommunicator.get_credentials()
 
+file_extensions = [".png", ".jpg"]
+
 bookUrl = 'https://a.digi4school.at/ebook/' + bookNr + "/"
 urlParts = bookUrl.split("/")
 
@@ -25,7 +28,7 @@ outputString = '.\\files\\output\\'
 # Paths from URL
 bookPath = "./files/" + bookNr + "/"
 
-png = urlParts[urlParts.__len__() - 1]
+imageString = urlParts[urlParts.__len__() - 1]
 
 if run_Download:
     if os.path.exists(bookPath) and os.path.isdir(bookPath):
@@ -41,38 +44,60 @@ if run_Download:
         name = (3 - str(page).__len__()) * "0" + str(page)
         svgUrl = pageUrl + "/" + str(page) + ".svg"
         svgPath = pagePath + "/" + name + ".svg"
+        skip = [False, False]
+        image = 1
+        while not all(skip):
+            for i in range(0, file_extensions.__len__()):
 
-        for image in range(1, 64):
+                # skip extension if there are no previous
+                #if skip[i]:
+                    #continue
 
-            png = str(image) + ".png"
-            imageUrl = pageUrl + "/img/" + str(image) + ".png"
+                imageString = str(image) + file_extensions[i]
+                imageUrl = pageUrl + "/img/" + imageString
 
-            answer = Digi4SchoolCommunicator.get_file(imageUrl)
+                answer = Digi4SchoolCommunicator.get_file(imageUrl)
 
-            if answer == "404" or answer.text.__contains__("Fehler"):
-                break
-            print("\t image: " + png + " 200 OK")
-            os.makedirs(imagePath, 0o777, True)
-            open(imagePath + png, 'wb').write(answer.content)
+                # skip if no image has been found
+                if answer == "404" or answer.text.__contains__("Fehler"):
+                    skip[i] = True
+                    continue
 
-        for shade in range(1, 200):
+                skip[i] = False
+                print("\t image: " + imageString + " 200 OK")
+                os.makedirs(imagePath, 0o777, True)
+                open(imagePath + imageString, 'wb').write(answer.content)
 
-            shading = str(shade) + ".png"
-            imageUrl = pageUrl + "/shade/" + str(shade) + ".png"
+            image += 1
 
-            answer = Digi4SchoolCommunicator.get_file(imageUrl)
+        skip = [False, False]
+        shade = 1
+        while not all(skip):
+            for i in range(0, file_extensions.__len__()):
+                shadeString = str(shade) + file_extensions[i]
+                imageUrl = pageUrl + "/shade/" + shadeString
 
-            if answer == "404" or answer.text.__contains__("Fehler"):
-                break
-            print("\t shade: " + shading + " 200 OK")
-            os.makedirs(pagePath + "/shade", 0o777, True)
-            open(pagePath + "/shade/" + shading, 'wb').write(answer.content)
+                answer = Digi4SchoolCommunicator.get_file(imageUrl)
+
+                if answer == "404" or answer.text.__contains__("Fehler"):
+                    skip[i] = True
+                    continue
+
+                skip[i] = False
+                print("\t shade: " + shadeString + " 200 OK")
+                os.makedirs(pagePath + "/shade", 0o777, True)
+                open(pagePath + "/shade/" + shadeString, 'wb').write(answer.content)
+
+            shade += 1
 
         answer = Digi4SchoolCommunicator.get_file(svgUrl)
         name = (3 - str(page).__len__()) * "0" + str(page)
 
         if answer == "404" or answer.text.__contains__("Fehler"):
-            break
+            answer = Digi4SchoolCommunicator.get_file(bookUrl + str(page) + ".svg")
+            svgPath = bookPath + "/" + name + ".svg"
+            if answer == "404" or answer.text.__contains__("Fehler"):
+                break
         print("\t" + name + ".svg" + " 200 OK")
         os.makedirs(pagePath, 0o777, True)
         open(svgPath, 'wb').write(answer.content)

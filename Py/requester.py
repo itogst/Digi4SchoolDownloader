@@ -35,8 +35,10 @@ class Digi4SchoolCommunicator:
     def get_credentials(cls):
         print("Email: ")
         cls.email = input()
+        cls.email = "sascha.gottsbacher@aon.at"
         print("Password: ")
         cls.password = input()
+        cls.password = "dpHhLdoSkfk5E1Sc44zm"
 
     @classmethod
     def get_file(cls, file_url):

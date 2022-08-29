@@ -1,11 +1,8 @@
-import os
-import shutil
-
 import cairosvg
 from svglib.svglib import *
 from PyPDF2 import PdfFileMerger
-from Py.all_svg2pdf import *
-from Py.requester import Digi4SchoolCommunicator
+from all_svg2pdf import *
+from requester import Digi4SchoolCommunicator
 import time
 
 run_Download = True

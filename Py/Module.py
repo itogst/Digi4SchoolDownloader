@@ -14,7 +14,7 @@ try:
     emailField.send_keys("sascha.gottsbacher@aon.at")
 
     passwordField = driver.find_element_by_id("password")
-    passwordField.send_keys("BOnqRqMyP1PKWdD8OOtZ")
+    passwordField.send_keys("")
 
     passwordField.send_keys(Keys.ENTER)
 
